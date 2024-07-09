@@ -1,13 +1,12 @@
 "use client";
 import { mockTableData } from "@/api/TableData";
 import CalendarIcon from "@/assets/svg/CalendarIcon";
+import DeleteIcon from "@/assets/svg/DeleteIcon";
+import EventIcon from "@/assets/svg/EventIcon";
 import Button from "@/common/Button";
 import DraggablePanel from "@/components/draggablePanel/DraggablePanel";
 import Searchbar from "@/components/filter/Searchbar";
 import Sidebar from "@/components/filter/Sidebar";
-import TableBody from "@/components/table/TableBody";
-import TableHeader from "@/components/table/TableHeader";
-import Table from "@/container/dashboard/Table";
 import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -38,15 +37,15 @@ const QueryBuilder = () => {
         <DraggablePanel />
 
         <div className="relative">
-          <div className=" flex flex-wrap gap-2 py-2">
+          <div className=" flex flex-wrap gap-2 py-2 items-center">
             {filters.map((filter, index) => (
               <div
                 key={index}
-                className="bg-blue-500 text-white px-2 py-1 rounded-lg flex items-center"
+                className="bg-gray-200 text-gray-500 px-2  rounded-lg flex items-center text-xs"
               >
                 {filter}
                 <Button
-                  className="ml-2 text-sm"
+                  className="ml-2 text-sm text-gray-500"
                   onClick={() => removeFilter(filter)}
                   data-testid={""}
                 >
@@ -55,18 +54,14 @@ const QueryBuilder = () => {
               </div>
             ))}
             {filters.length > 0 && (
-              <Button
-                className="bg-red-500 text-white px-2 py-1 rounded-full"
-                onClick={clearFilters}
-                children={"Clear All"}
-                data-testid={""}
-              />
+              //Delete Icon Svg
+              <DeleteIcon onClick={clearFilters} />
             )}
           </div>
           <Button
             onClick={toggleDropdown}
             className="px-2 rounded-lg text-md flex justify-center items-center gap-2 font-medium  bg-[#eae8fb]"
-            data-testid="toggle-dropdown"
+            data-testid={""}
           >
             <span className="font-medium text-xl  text-[#4f44e0]">+</span>
             <span className="text-sm  text-[#4f44e0]"> Filter</span>
@@ -90,13 +85,53 @@ const QueryBuilder = () => {
                       toggleDropdown();
                     }}
                     className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
-                    data-testid={"add-first-seen-filter"}
+                    data-testid={""}
                   >
                     {/* Calendar Icon svg */}
                     <CalendarIcon />
                     <span className="text-black text-sm"> First Seen</span>
                   </Button>
                   {/* Horizontal Divider */}
+                  <span className="text-xs">All properties</span>
+                  <div>
+                    <Button
+                      onClick={() => {
+                        addFilter("First Seen");
+                        toggleDropdown();
+                      }}
+                      className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
+                      data-testid={""}
+                    >
+                      {/* Calendar Icon svg */}
+                      <CalendarIcon />
+                      <span className="text-black text-sm"> First Seen</span>
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        addFilter("First Seen");
+                        toggleDropdown();
+                      }}
+                      className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
+                      data-testid={""}
+                    >
+                      {/* Calendar Icon svg */}
+                      <EventIcon />
+                      <span className="text-black text-sm"> Event</span>
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        addFilter("First Seen");
+                        toggleDropdown();
+                      }}
+                      className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
+                      data-testid={""}
+                    >
+                      {/* Calendar Icon svg */}
+                      <CalendarIcon />
+                      <span className="text-black text-sm"> Event</span>
+                    </Button>
+                  </div>
+
                   <div className="border-t border-gray-300 my-1 "></div>
                 </div>
               </div>
@@ -107,5 +142,4 @@ const QueryBuilder = () => {
     </DndProvider>
   );
 };
-
 export default QueryBuilder;
