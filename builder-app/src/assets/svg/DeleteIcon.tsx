@@ -6,7 +6,10 @@ interface DeleteIcon {
 
 const DeleteIcon: React.FC<DeleteIcon> = ({ onClick }) => {
   return (
-    <div className="mp-button-content cursor-pointer" onClick={onClick}>
+    <div
+      className="mp-button-content cursor-pointer flex items-center"
+      onClick={onClick}
+    >
       <svg
         width={"24"}
         height={"24"}
