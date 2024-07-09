@@ -1,4 +1,3 @@
-"use client";
 import { mockTableData } from "@/api/TableData";
 import CalendarIcon from "@/assets/svg/CalendarIcon";
 import DeleteIcon from "@/assets/svg/DeleteIcon";
@@ -7,6 +6,8 @@ import Button from "@/common/Button";
 import DraggablePanel from "@/components/draggablePanel/DraggablePanel";
 import Searchbar from "@/components/filter/Searchbar";
 import Sidebar from "@/components/filter/Sidebar";
+import TableBody from "@/components/table/TableBody";
+import TableHeader from "@/components/table/TableHeader";
 import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -37,7 +38,7 @@ const QueryBuilder = () => {
         <DraggablePanel />
 
         <div className="relative">
-          <div className=" flex flex-wrap gap-2 py-2 items-center">
+          <div className=" flex flex-wrap gap-2 py-2">
             {filters.map((filter, index) => (
               <div
                 key={index}
@@ -88,10 +89,11 @@ const QueryBuilder = () => {
                     data-testid={""}
                   >
                     {/* Calendar Icon svg */}
-                    <CalendarIcon />
+                    <EventIcon />
                     <span className="text-black text-sm"> First Seen</span>
                   </Button>
                   {/* Horizontal Divider */}
+                  <div className="border-t border-gray-300 my-1 "></div>
                   <span className="text-xs">All properties</span>
                   <div>
                     <Button
@@ -103,7 +105,7 @@ const QueryBuilder = () => {
                       data-testid={""}
                     >
                       {/* Calendar Icon svg */}
-                      <CalendarIcon />
+                      <EventIcon />
                       <span className="text-black text-sm"> First Seen</span>
                     </Button>
                     <Button
@@ -127,12 +129,10 @@ const QueryBuilder = () => {
                       data-testid={""}
                     >
                       {/* Calendar Icon svg */}
-                      <CalendarIcon />
+                      <EventIcon />
                       <span className="text-black text-sm"> Event</span>
                     </Button>
                   </div>
-
-                  <div className="border-t border-gray-300 my-1 "></div>
                 </div>
               </div>
             </div>
@@ -142,4 +142,5 @@ const QueryBuilder = () => {
     </DndProvider>
   );
 };
+
 export default QueryBuilder;
