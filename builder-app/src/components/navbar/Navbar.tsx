@@ -20,9 +20,8 @@ const Navbar = () => {
       {/* Left section with logo and links */}
       <div className="flex items-center">
         {/* Logo */}
-        <div className="container px-2 cursor-pointer">
-          <LogoIcon />
-        </div>
+
+        <LogoIcon />
         {/* Links */}
         <div className="items-center justify-center flex">
           <div className="text-white text-sm mr-8">Board</div>

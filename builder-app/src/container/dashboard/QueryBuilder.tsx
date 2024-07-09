@@ -1,11 +1,13 @@
 "use client";
 import { mockTableData } from "@/api/TableData";
 import CalendarIcon from "@/assets/svg/CalendarIcon";
-import DeleteIcon from "@/assets/svg/DeleteIcon";
 import Button from "@/common/Button";
 import DraggablePanel from "@/components/draggablePanel/DraggablePanel";
 import Searchbar from "@/components/filter/Searchbar";
 import Sidebar from "@/components/filter/Sidebar";
+import TableBody from "@/components/table/TableBody";
+import TableHeader from "@/components/table/TableHeader";
+import Table from "@/container/dashboard/Table";
 import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -36,15 +38,15 @@ const QueryBuilder = () => {
         <DraggablePanel />
 
         <div className="relative">
-          <div className=" flex flex-wrap gap-2 py-2 items-center">
+          <div className=" flex flex-wrap gap-2 py-2">
             {filters.map((filter, index) => (
               <div
                 key={index}
-                className="bg-gray-200 text-gray-500 px-2  rounded-lg flex items-center text-xs"
+                className="bg-blue-500 text-white px-2 py-1 rounded-lg flex items-center"
               >
                 {filter}
                 <Button
-                  className="ml-2 text-sm text-gray-500"
+                  className="ml-2 text-sm"
                   onClick={() => removeFilter(filter)}
                   data-testid={""}
                 >
@@ -53,8 +55,12 @@ const QueryBuilder = () => {
               </div>
             ))}
             {filters.length > 0 && (
-              //Delete Icon Svg
-              <DeleteIcon onClick={clearFilters} />
+              <Button
+                className="bg-red-500 text-white px-2 py-1 rounded-full"
+                onClick={clearFilters}
+                children={"Clear All"}
+                data-testid={""}
+              />
             )}
           </div>
           <Button
@@ -101,4 +107,5 @@ const QueryBuilder = () => {
     </DndProvider>
   );
 };
+
 export default QueryBuilder;

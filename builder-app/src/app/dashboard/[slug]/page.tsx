@@ -1,4 +1,5 @@
 "use client";
+
 import QueryBuilder from "@/container/dashboard/QueryBuilder";
 import Table from "@/container/dashboard/Table";
 
