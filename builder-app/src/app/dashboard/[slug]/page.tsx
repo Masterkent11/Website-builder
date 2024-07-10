@@ -208,9 +208,6 @@ import Table from "@/container/dashboard/Table";
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-6  ">
-      <div>
-        <Filter />
-      </div>
       <QueryBuilder />
       <Table />
     </div>
