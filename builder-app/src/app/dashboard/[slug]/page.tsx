@@ -1,5 +1,6 @@
 "use client";
 
+import Filter from "@/container/dashboard/Filter";
 import QueryBuilder from "@/container/dashboard/QueryBuilder";
 import Table from "@/container/dashboard/Table";
 
@@ -207,6 +208,9 @@ import Table from "@/container/dashboard/Table";
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-6  ">
+      <div>
+        <Filter />
+      </div>
       <QueryBuilder />
       <Table />
     </div>
