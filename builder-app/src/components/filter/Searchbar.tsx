@@ -97,7 +97,7 @@ const Searchbar = () => {
       <div className="flex">
         <Button
           className="w-24 bg-transparent flex gap-2 items-center justify-center rounded"
-          data-testid="Create-filter"
+          data-testid={""}
         >
           <span className="font-medium text-xl text-[#4f44e0]">+</span>
           <span className="text-sm text-[#4f44e0]"> Create</span>
