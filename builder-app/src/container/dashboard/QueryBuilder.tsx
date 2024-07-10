@@ -49,7 +49,7 @@ const QueryBuilder = () => {
                 >
                   {filter}
                   <Button
-                    className="ml-2 text-sm text-gray-500"
+                    className="ml-2 text-xs text-gray-500"
                     onClick={() => removeFilter(filter)}
                     data-testid={""}
                   >
@@ -67,8 +67,8 @@ const QueryBuilder = () => {
               className="px-2 rounded-lg text-md flex justify-center items-center gap-2 font-medium  bg-[#eae8fb]"
               data-testid={""}
             >
-              <span className="font-medium text-xl  text-[#4f44e0]">+</span>
-              <span className="text-sm  text-[#4f44e0]"> Filter</span>
+              <span className="font-medium text-xl  text-[#463dbb]">+</span>
+              <span className="text-sm  text-[#463dbb]"> Filter</span>
             </Button>
             {isDropdownOpen && (
               <div className="absolute mt-2 w-[90vmin] h-auto bg-white shadow-lg rounded-md overflow-hidden z-10 border-gray-600">
@@ -93,7 +93,7 @@ const QueryBuilder = () => {
                     >
                       {/* Calendar Icon svg */}
                       <EventIcon />
-                      <span className="text-black text-sm"> First Seen</span>
+                      <span className="text-black text-xs"> First Seen</span>
                     </Button>
                     {/* Horizontal Divider */}
                     <div className="border-t border-gray-300 my-1 "></div>
@@ -104,36 +104,116 @@ const QueryBuilder = () => {
                           addFilter("First Seen");
                           toggleDropdown();
                         }}
-                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
+                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
                         {/* Calendar Icon svg */}
-                        <EventIcon />
-                        <span className="text-black text-sm"> First Seen</span>
+                        <svg
+                          width={16}
+                          height={16}
+                          color="#463dbb"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 22 22"
+                        >
+                          <path
+                            d="M18 14.894V9.78c0-2.119-3.77-2.119-4.308-.53"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          ></path>
+                          <path
+                            d="M18 11.367c-2.543-.53-4.577.045-4.577 1.78 0 2.257 3.77 1.853 4.577.424v-2.204z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                          ></path>
+                          <path
+                            d="M4 15l1.077-3M11 15l-1.077-3m0 0L7.86 6.253A.383.383 0 007.5 6v0a.383.383 0 00-.36.253L5.077 12m4.846 0H5.077"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                        <span className="text-black text-xs">Name</span>
                       </Button>
                       <Button
                         onClick={() => {
                           addFilter("First Seen");
                           toggleDropdown();
                         }}
-                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
+                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
                         {/* Calendar Icon svg */}
-                        <EventIcon />
-                        <span className="text-black text-sm"> Event</span>
+                        <svg
+                          width={16}
+                          height={16}
+                          color="#463dbb"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 22 22"
+                        >
+                          <path
+                            d="M18 14.894V9.78c0-2.119-3.77-2.119-4.308-.53"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          ></path>
+                          <path
+                            d="M18 11.367c-2.543-.53-4.577.045-4.577 1.78 0 2.257 3.77 1.853 4.577.424v-2.204z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                          ></path>
+                          <path
+                            d="M4 15l1.077-3M11 15l-1.077-3m0 0L7.86 6.253A.383.383 0 007.5 6v0a.383.383 0 00-.36.253L5.077 12m4.846 0H5.077"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                        <span className="text-black text-xs">Distinct ID</span>
                       </Button>
                       <Button
                         onClick={() => {
                           addFilter("First Seen");
                           toggleDropdown();
                         }}
-                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-sm rounded-sm"
+                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
                         {/* Calendar Icon svg */}
                         <EventIcon />
-                        <span className="text-black text-sm"> Event</span>
+                        <span className="text-black text-xs"> Event ▸ </span>
+                        <span className="text-black text-xs">
+                          {" "}
+                          Session Start
+                        </span>
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          addFilter("First Seen");
+                          toggleDropdown();
+                        }}
+                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
+                        data-testid={""}
+                      >
+                        {/* Calendar Icon svg */}
+                        <EventIcon />
+                        <span className="text-black text-xs"> Event ▸</span>
+                        <span className="text-black text-xs">Session End</span>
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          addFilter("First Seen");
+                          toggleDropdown();
+                        }}
+                        className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
+                        data-testid={""}
+                      >
+                        {/* Calendar Icon svg */}
+                        <EventIcon />
+                        <span className="text-black text-xs"> Event ▸</span>
+                        <span className="text-black text-xs">Any Event</span>
                       </Button>
                     </div>
                   </div>
