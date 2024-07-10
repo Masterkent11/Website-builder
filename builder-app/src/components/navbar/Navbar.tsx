@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import LogoIcon from "@/assets/svg/LogoIcon";
 import SearchIcon from "@/assets/svg/searchIcon";
 import DropdownIcon from "@/assets/svg/dropDownIcon";
+import DataManagement from "@/assets/svg/DataManagement";
+import ApplicationIcon from "@/assets/svg/ApplicationIcon";
+import HelpIcon from "@/assets/svg/HelpIcon";
+import SettingIcon from "@/assets/svg/SettingIcon";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -60,12 +64,28 @@ const Navbar = () => {
       </div>
 
       {/* Right section with dropdown settings */}
-      <div className="ml-8">
+      <div className=" flex flex-row ml-8 gap-7">
+        <div className="relative">
+          <DataManagement />
+        </div>
+        <div className="relative">
+          <ApplicationIcon />
+        </div>
+        <div className="relative">
+          <HelpIcon />
+        </div>
+        <div className="relative">
+          <SettingIcon />
+        </div>
         <div className="relative">
           <button
             onClick={toggleDropdown}
-            className="text-white focus:outline-none"
+            className="text-white focus:outline-none flex flex-row gap-3"
           >
+            <div className="text-xs text-white flex flex-col text-start">
+              <span>test</span>
+              <span>All Project Data</span>
+            </div>
             <DropdownIcon />
           </button>
           {isDropdownOpen && (
@@ -73,7 +93,7 @@ const Navbar = () => {
               <div className="py-1">
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-100"
                 >
                   Settings
                 </a>
