@@ -15,7 +15,8 @@ const Table = () => {
 
   // Function to check if an item matches the query rules
   const matchesQuery = (item: any, query: RuleType<string, string, any, string> | RuleGroupType): boolean => {
-    if ('field' in query) { // Check if it's a RuleType
+    if ('field' in query) {
+       // Check if it's a RuleType
       switch (query.operator) {
         case 'beginsWith':
           return item[query.field].startsWith(query.value);
@@ -23,11 +24,10 @@ const Table = () => {
           return item[query.field].includes(query.value);
         case 'equals':
           return item[query.field] === query.value;
-        // Add more cases for other operators as needed
         default:
           return true;
       }
-    } else { // It's a RuleGroupType
+    } else {
       return query.rules.every(rule => matchesQuery(item, rule));
     }
   };
