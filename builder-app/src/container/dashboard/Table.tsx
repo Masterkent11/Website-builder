@@ -1,33 +1,71 @@
+
 import { mockTableData } from "@/api/TableData";
 import TableBody from "@/components/table/TableBody";
 import TableHeader from "@/components/table/TableHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { RuleGroupType, formatQuery, RuleType } from 'react-querybuilder';
+import ReactQueryBuilder from "@/components/reactQueryBuilder/reactQueryBuilder";
+
 
 const Table = () => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [selectAll, setSelectAll] = useState(false);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
+  const [query, setQuery] = useState<RuleGroupType>({ combinator: 'and', rules: [] });
+
+  // Function to check if an item matches the query rules
+  const matchesQuery = (item: any, query: RuleType<string, string, any, string> | RuleGroupType): boolean => {
+    if ('field' in query) { // Check if it's a RuleType
+      switch (query.operator) {
+        case 'beginsWith':
+          return item[query.field].startsWith(query.value);
+        case 'contains':
+          return item[query.field].includes(query.value);
+        case 'equals':
+          return item[query.field] === query.value;
+        // Add more cases for other operators as needed
+        default:
+          return true;
+      }
+    } else { // It's a RuleGroupType
+      return query.rules.every(rule => matchesQuery(item, rule));
+    }
+  };
 
   // Function to fetch or set table data (simulate fetching data)
   const fetchTableData = () => {
-    // Simulate fetching data from an API or database
-    // Replace with actual data fetching logic
     setTimeout(() => {
       setTableData(mockTableData);
     }, 1000); // Simulate loading delay
   };
 
   // Call fetchTableData on component mount (simulating initial data load)
-  useState(() => {
+  useEffect(() => {
     fetchTableData();
-  });
+  }, []);
+
+  // Effect to filter tableData based on query
+  useEffect(() => {
+    const filterData = () => {
+      if (query.rules.length === 0) {
+        setFilteredData(tableData);
+        return;
+      }
+
+      const newFilteredData = tableData.filter(item => matchesQuery(item, query));
+      setFilteredData(newFilteredData);
+    };
+
+    filterData();
+  }, [query, tableData]);
 
   // Function to handle select all checkbox
   const handleSelectAll = () => {
-    const updatedData = tableData.map((row) => ({
+    const updatedData = filteredData.map((row) => ({
       ...row,
       selected: !selectAll,
     }));
-    setTableData(updatedData);
+    setFilteredData(updatedData);
     setSelectAll(!selectAll);
   };
 
@@ -42,15 +80,16 @@ const Table = () => {
 
   return (
     <div className="w-full mt-6">
+      <ReactQueryBuilder onQueryChange={setQuery} />
       {/* Table */}
-      {tableData.length > 0 && (
+      {filteredData.length > 0 && (
         <table className="min-w-full divide-y divide-gray-200 mt-4 rounded-lg overflow-hidden">
           <TableHeader
             selectAll={selectAll}
             handleSelectAll={handleSelectAll}
           />
           <TableBody
-            tableData={tableData}
+            tableData={filteredData}
             handleRowCheckboxChange={handleRowCheckboxChange}
           />
         </table>
