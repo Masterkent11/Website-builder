@@ -12,6 +12,29 @@ const Table = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [filteredData, setFilteredData] = useState<any[]>([]);
   const [query, setQuery] = useState<RuleGroupType>({ combinator: 'and', rules: [] });
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+    // Array of options with labels
+    const options = [
+      'Add rule to new groups',
+      'Auto-select field',
+      'Auto-select operator',
+      'Combinators between rules',
+      'Debug mode',
+      'Disabled',
+      'Drag-and-drop enabled',
+      'Independent combinators',
+      'Justified layout',
+      'Lists as arrays',
+      'Reset on field change',
+      'Reset on operator change',
+      'Show "not" toggle',
+      'Show branches',
+      'Show clone buttons',
+      'Show lock buttons',
+      'Show shift actions',
+      'Use validation',
+    ];
 
   // Function to check if an item matches the query rules
   const matchesQuery = (item: any, query: RuleType<string, string, any, string> | RuleGroupType): boolean => {
@@ -52,12 +75,18 @@ const Table = () => {
         return;
       }
 
-      const newFilteredData = tableData.filter(item => matchesQuery(item, query));
+      let newFilteredData = tableData.filter(item => matchesQuery(item, query));
       setFilteredData(newFilteredData);
+
+      if (selectedOptions.includes('Disabled')) {
+        newFilteredData = newFilteredData.filter(item => item.status === 'Disabled');
+      }
+
+      setFilteredData(newFilteredData)
     };
 
     filterData();
-  }, [query, tableData]);
+  }, [query, tableData, selectedOptions]);
 
   // Function to handle select all checkbox
   const handleSelectAll = () => {
@@ -78,8 +107,32 @@ const Table = () => {
     setSelectAll(updatedData.every((row: { selected: any }) => row.selected));
   };
 
+  const handleCheckboxChange = (option: string) => {
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(selectedOptions.filter(item => item !== option))
+    }
+    else {
+      setSelectedOptions([...selectedOptions, option])
+    }
+  }
+
   return (
     <div className="w-full mt-6">
+      {/* <div>
+        <h2>Options:</h2>
+        {options.map(option => (
+          <div key={option} className="flex items-center mb-2">
+            <input
+              type="checkbox"
+              id={option}
+              checked={selectedOptions.includes(option)}
+              onChange={() => handleCheckboxChange(option)}
+              className="mr-2"
+            />
+            <label htmlFor={option}>{option}</label>
+          </div>
+        ))}
+      </div> */}
       <ReactQueryBuilder onQueryChange={setQuery} />
       {/* Table */}
       {filteredData.length > 0 && (
