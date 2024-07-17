@@ -1,5 +1,5 @@
 // src/common/Button.tsx
-import { ButtonProps } from "@/types/ButtonTypes";
+import { ButtonProps } from "@/types/common/ButtonTypes";
 import React from "react";
 
 const Button: React.FC<ButtonProps> = ({

@@ -1,17 +1,14 @@
-import { mockTableData } from "@/api/TableData";
-import CalendarIcon from "@/assets/svg/CalendarIcon";
-import DeleteIcon from "@/assets/svg/DeleteIcon";
-import EventIcon from "@/assets/svg/EventIcon";
+import DeleteIcon from "@/assets/svg/icons/DeleteIcon";
+import EventIcon from "@/assets/svg/icons/EventIcon";
 import Button from "@/common/Button";
 import DraggablePanel from "@/components/draggablePanel/DraggablePanel";
 import Searchbar from "@/components/filter/Searchbar";
 import Sidebar from "@/components/filter/Sidebar";
-import TableBody from "@/components/table/TableBody";
-import TableHeader from "@/components/table/TableHeader";
 import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Filter from "./Filter";
+import { CharacterIcon } from "@/assets/svg";
 
 const QueryBuilder = () => {
   const [filters, setFilters] = useState<string[]>([]);
@@ -39,7 +36,6 @@ const QueryBuilder = () => {
       <DndProvider backend={HTML5Backend}>
         <div className="p-2 border-gray-300 border rounded-xl">
           <DraggablePanel />
-
           <div className="relative">
             <div className=" flex flex-wrap gap-2 py-2">
               {filters.map((filter, index) => (
@@ -107,33 +103,8 @@ const QueryBuilder = () => {
                         className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
-                        {/* Calendar Icon svg */}
-                        <svg
-                          width={16}
-                          height={16}
-                          color="#463dbb"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 22 22"
-                        >
-                          <path
-                            d="M18 14.894V9.78c0-2.119-3.77-2.119-4.308-.53"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                          ></path>
-                          <path
-                            d="M18 11.367c-2.543-.53-4.577.045-4.577 1.78 0 2.257 3.77 1.853 4.577.424v-2.204z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                          ></path>
-                          <path
-                            d="M4 15l1.077-3M11 15l-1.077-3m0 0L7.86 6.253A.383.383 0 007.5 6v0a.383.383 0 00-.36.253L5.077 12m4.846 0H5.077"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                          ></path>
-                        </svg>
+                        {/* Character Icon svg */}
+                        <CharacterIcon />
                         <span className="text-black text-xs">Name</span>
                       </Button>
                       <Button
@@ -144,33 +115,8 @@ const QueryBuilder = () => {
                         className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
-                        {/* Calendar Icon svg */}
-                        <svg
-                          width={16}
-                          height={16}
-                          color="#463dbb"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 22 22"
-                        >
-                          <path
-                            d="M18 14.894V9.78c0-2.119-3.77-2.119-4.308-.53"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                          ></path>
-                          <path
-                            d="M18 11.367c-2.543-.53-4.577.045-4.577 1.78 0 2.257 3.77 1.853 4.577.424v-2.204z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                          ></path>
-                          <path
-                            d="M4 15l1.077-3M11 15l-1.077-3m0 0L7.86 6.253A.383.383 0 007.5 6v0a.383.383 0 00-.36.253L5.077 12m4.846 0H5.077"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                          ></path>
-                        </svg>
+                        {/* Character Icon svg */}
+                        <CharacterIcon />
                         <span className="text-black text-xs">Distinct ID</span>
                       </Button>
                       <Button
@@ -181,7 +127,7 @@ const QueryBuilder = () => {
                         className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
-                        {/* Calendar Icon svg */}
+                        {/* Event Icon svg */}
                         <EventIcon />
                         <span className="text-black text-xs"> Event ▸ </span>
                         <span className="text-black text-xs">
@@ -197,7 +143,7 @@ const QueryBuilder = () => {
                         className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
-                        {/* Calendar Icon svg */}
+                        {/* Event Icon svg */}
                         <EventIcon />
                         <span className="text-black text-xs"> Event ▸</span>
                         <span className="text-black text-xs">Session End</span>
@@ -210,7 +156,7 @@ const QueryBuilder = () => {
                         className="w-full flex justify-start items-center gap-2 p-2 bg-transparent text-xs rounded-sm"
                         data-testid={""}
                       >
-                        {/* Calendar Icon svg */}
+                        {/* Event Icon svg */}
                         <EventIcon />
                         <span className="text-black text-xs"> Event ▸</span>
                         <span className="text-black text-xs">Any Event</span>
