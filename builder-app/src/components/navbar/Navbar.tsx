@@ -1,13 +1,13 @@
 // components/Navbar.tsx
 "use client";
 import React, { useState } from "react";
-import LogoIcon from "@/assets/svg/LogoIcon";
-import SearchIcon from "@/assets/svg/searchIcon";
-import DropdownIcon from "@/assets/svg/dropDownIcon";
-import DataManagement from "@/assets/svg/DataManagement";
-import ApplicationIcon from "@/assets/svg/ApplicationIcon";
-import HelpIcon from "@/assets/svg/HelpIcon";
-import SettingIcon from "@/assets/svg/SettingIcon";
+import LogoIcon from "@/assets/svg/icons/LogoIcon";
+import SearchIcon from "@/assets/svg/icons/searchIcon";
+import DropdownIcon from "@/assets/svg/icons/dropDownIcon";
+import DataManagement from "@/assets/svg/icons/DataManagement";
+import ApplicationIcon from "@/assets/svg/icons/ApplicationIcon";
+import HelpIcon from "@/assets/svg/icons/HelpIcon";
+import SettingIcon from "@/assets/svg/icons/SettingIcon";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

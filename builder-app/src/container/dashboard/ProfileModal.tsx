@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { LockIcon2 } from "@/assets/svg";
 
 const ProfileModal = ({
   isOpen,
@@ -56,7 +57,7 @@ const ProfileModal = ({
               <div className="flex flex-col gap-3">
                 <h4 className="font-semibold">Property Name</h4>
                 <div className="relative">
-                  <svg
+                  {/* <svg
                     width={20}
                     height={20}
                     data-name="Layer 1"
@@ -96,9 +97,10 @@ const ProfileModal = ({
                       fill="currentColor"
                       d="M11 12.33a1.34 1.34 0 1 0 1.33 1.34A1.33 1.33 0 0 0 11 12.33z"
                     ></path>
-                  </svg>
+                  </svg> */}
+                  <LockIcon2 />
                   <Input
-                    className="pl-10" // Adjust padding-left to accommodate the icon
+                    className="pl-10"
                     placeholder={"$distinct_id"}
                     type={"text"}
                     value={""}
@@ -265,10 +267,7 @@ const ProfileModal = ({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
-      <Dialog
-        open={isOpen}
-        onOpenChange={onClose}
-      >
+      <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="sm:max-w-[60vmax] w-full max-w-md">
           <DialogHeader>
             <DialogTitle>Create or Modify Profile</DialogTitle>

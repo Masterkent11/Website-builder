@@ -1,0 +1,21 @@
+// Array of options with labels
+export const options = [
+  "Add rule to new groups",
+  "Auto-select field",
+  "Auto-select operator",
+  "Combinators between rules",
+  "Debug mode",
+  "Disabled",
+  "Drag-and-drop enabled",
+  "Independent combinators",
+  "Justified layout",
+  "Lists as arrays",
+  "Reset on field change",
+  "Reset on operator change",
+  'Show "not" toggle',
+  "Show branches",
+  "Show clone buttons",
+  "Show lock buttons",
+  "Show shift actions",
+  "Use validation",
+];

@@ -1,73 +1,55 @@
-
-import { mockTableData } from "@/api/TableData";
+import { mockTableData } from "@/api/index";
 import TableBody from "@/components/table/TableBody";
 import TableHeader from "@/components/table/TableHeader";
 import { useState, useEffect } from "react";
-import { RuleGroupType, formatQuery, RuleType } from 'react-querybuilder';
+import { RuleGroupType, formatQuery, RuleType } from "react-querybuilder";
 import ReactQueryBuilder from "@/components/reactQueryBuilder/reactQueryBuilder";
-
+import { options } from "@/utils/optionsQueryBuilder";
 
 const Table = () => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [selectAll, setSelectAll] = useState(false);
   const [filteredData, setFilteredData] = useState<any[]>([]);
-  const [query, setQuery] = useState<RuleGroupType>({ combinator: 'and', rules: [
-    {
-      field: "name",
-      operator: "beginsWith",
-      value: "",
-    },
-    {
-      field: "email",
-      operator: "contains",
-      value: "",
-    }
-  ] });
+  const [query, setQuery] = useState<RuleGroupType>({
+    combinator: "and",
+    rules: [
+      {
+        field: "name",
+        operator: "beginsWith",
+        value: "",
+      },
+      {
+        field: "email",
+        operator: "contains",
+        value: "",
+      },
+    ],
+  });
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
-    // Array of options with labels
-    const options = [
-      'Add rule to new groups',
-      'Auto-select field',
-      'Auto-select operator',
-      'Combinators between rules',
-      'Debug mode',
-      'Disabled',
-      'Drag-and-drop enabled',
-      'Independent combinators',
-      'Justified layout',
-      'Lists as arrays',
-      'Reset on field change',
-      'Reset on operator change',
-      'Show "not" toggle',
-      'Show branches',
-      'Show clone buttons',
-      'Show lock buttons',
-      'Show shift actions',
-      'Use validation',
-    ];
-
   // Function to check if an item matches the query rules
-  const matchesQuery = (item: any, query: RuleType<string, string, any, string> | RuleGroupType): boolean => {
-    if ('field' in query) {
-       // Check if it's a RuleType
+  const matchesQuery = (
+    item: any,
+    query: RuleType<string, string, any, string> | RuleGroupType
+  ): boolean => {
+    if ("field" in query) {
+      // Check if it's a RuleType
       switch (query.operator) {
-        case 'beginsWith':
+        case "beginsWith":
           return item[query.field].startsWith(query.value);
-        case 'contains':
+        case "contains":
           return item[query.field].includes(query.value);
-        case 'equals':
+        case "equals":
           return item[query.field] === query.value;
         default:
           return true;
       }
     } else {
-
-  if (query.combinator === 'and') {
-    return query.rules.every(rule => matchesQuery(item, rule));
-  } else {
-    return query.rules.some(rule => matchesQuery(item, rule));
-  }
+      if (query.combinator === "and") {
+        return query.rules.every((rule) => matchesQuery(item, rule));
+      } else {
+        return query.rules.some((rule) => matchesQuery(item, rule));
+      }
     }
   };
 
@@ -91,14 +73,18 @@ const Table = () => {
         return;
       }
 
-      let newFilteredData = tableData.filter(item => matchesQuery(item, query));
+      let newFilteredData = tableData.filter((item) =>
+        matchesQuery(item, query)
+      );
       setFilteredData(newFilteredData);
 
-      if (selectedOptions.includes('Disabled')) {
-        newFilteredData = newFilteredData.filter(item => item.status === 'Disabled');
+      if (selectedOptions.includes("Disabled")) {
+        newFilteredData = newFilteredData.filter(
+          (item) => item.status === "Disabled"
+        );
       }
 
-      setFilteredData(newFilteredData)
+      setFilteredData(newFilteredData);
     };
 
     filterData();
@@ -125,18 +111,17 @@ const Table = () => {
 
   const handleCheckboxChange = (option: string) => {
     if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter(item => item !== option))
+      setSelectedOptions(selectedOptions.filter((item) => item !== option));
+    } else {
+      setSelectedOptions([...selectedOptions, option]);
     }
-    else {
-      setSelectedOptions([...selectedOptions, option])
-    }
-  }
+  };
 
   return (
     <div className="w-full mt-6">
       {/* <div>
         <h2>Options:</h2>
-        {options.map(option => (
+        {options.map((option) => (
           <div key={option} className="flex items-center mb-2">
             <input
               type="checkbox"

@@ -1,5 +1,4 @@
-export // Mock table data for demonstration
-const mockTableData = [
+export const mockTableData = [
   {
     id: 1,
     name: "John Doe",
