@@ -11,7 +11,18 @@ const Table = () => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [selectAll, setSelectAll] = useState(false);
   const [filteredData, setFilteredData] = useState<any[]>([]);
-  const [query, setQuery] = useState<RuleGroupType>({ combinator: 'and', rules: [] });
+  const [query, setQuery] = useState<RuleGroupType>({ combinator: 'and', rules: [
+    {
+      field: "name",
+      operator: "beginsWith",
+      value: "",
+    },
+    {
+      field: "email",
+      operator: "contains",
+      value: "",
+    }
+  ] });
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
     // Array of options with labels
@@ -51,7 +62,12 @@ const Table = () => {
           return true;
       }
     } else {
-      return query.rules.every(rule => matchesQuery(item, rule));
+
+  if (query.combinator === 'and') {
+    return query.rules.every(rule => matchesQuery(item, rule));
+  } else {
+    return query.rules.some(rule => matchesQuery(item, rule));
+  }
     }
   };
 
@@ -133,7 +149,7 @@ const Table = () => {
           </div>
         ))}
       </div> */}
-      <ReactQueryBuilder onQueryChange={setQuery} />
+      <ReactQueryBuilder query={query} onQueryChange={setQuery} />
       {/* Table */}
       {filteredData.length > 0 && (
         <table className="min-w-full divide-y divide-gray-200 mt-4 rounded-lg overflow-hidden">

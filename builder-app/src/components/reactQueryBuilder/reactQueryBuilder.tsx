@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Calendar } from '../ui/calendar';
 
 const fields = [
   { name: 'name', label: 'Name' },
@@ -22,6 +23,7 @@ const fields = [
 ];
 
 interface QueryBuilderProps {
+  query: RuleGroupType;
   onQueryChange: (query: RuleGroupType) => void;
 }
 
@@ -41,25 +43,26 @@ const controlClassNames: Partial<Classnames> = {
   removeRule: 'bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg',
 };
 
-const ReactQueryBuilder: React.FC<QueryBuilderProps> = ({ onQueryChange }) => {
+const ReactQueryBuilder: React.FC<QueryBuilderProps> = ({ query, onQueryChange }) => {
   return (
     <QueryBuilder
       fields={fields}
+      query={query}
       onQueryChange={onQueryChange}
       controlClassnames={controlClassNames}
       controlElements={{
         
         addRuleAction: ({ handleOnClick }) => (
           <Button className='text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg mr-1' onClick={handleOnClick}>
-            Add Rule
+            + Add Rule
           </Button>
         ),
         addGroupAction: ({ handleOnClick }) => (
           <Button className='text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg'  onClick={handleOnClick}>
-            Add Group
+            + Add Group
           </Button>
         ),
-       
+
       }}
     />
   );
