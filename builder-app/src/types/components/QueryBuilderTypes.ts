@@ -1,6 +1,5 @@
-import {RuleGroupType} from 'react-querybuilder'
+import { RuleGroupType } from "react-querybuilder";
 export interface QueryBuilderProps {
-    query: RuleGroupType;
-    onQueryChange: (query: RuleGroupType) => void;
-  }
-  
+  query: RuleGroupType;
+  onQueryChange: (query: RuleGroupType) => void;
+}

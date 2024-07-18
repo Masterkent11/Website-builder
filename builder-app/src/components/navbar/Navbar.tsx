@@ -19,7 +19,12 @@ const Navbar = () => {
   return (
     <div
       className="py-4 px-6 flex items-center justify-between"
-      style={{ background: "#4f44e0" }}
+      style={{
+        background: "#4f44e0",
+        position: "sticky",
+        top: 0,
+        zIndex: 9999,
+      }}
     >
       {/* Left section with logo and links */}
       <div className="flex items-center">
