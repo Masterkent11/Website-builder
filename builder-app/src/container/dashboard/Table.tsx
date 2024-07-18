@@ -134,7 +134,10 @@ const Table = () => {
           </div>
         ))}
       </div> */}
-      <ReactQueryBuilder query={query} onQueryChange={setQuery} />
+      <ReactQueryBuilder
+        query={query}
+        onQueryChange={setQuery}
+      />
       {/* Table */}
       {filteredData.length > 0 && (
         <table className="min-w-full divide-y divide-gray-200 mt-4 rounded-lg overflow-hidden">
