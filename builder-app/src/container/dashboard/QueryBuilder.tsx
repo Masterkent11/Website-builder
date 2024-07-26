@@ -67,7 +67,7 @@ const QueryBuilder = () => {
               <span className="text-sm  text-[#463dbb]"> Filter</span>
             </Button>
             {isDropdownOpen && (
-              <div className="absolute mt-2 w-[90vmin] h-auto bg-white shadow-lg rounded-md overflow-hidden z-10 border-gray-600">
+              <div className="absolute mt-2 w-[90vmin] h-auto bg-white shadow-lg rounded-md overflow-hidden z-9999 border-gray-600">
                 {/* Searchbar */}
                 <Searchbar />
                 <div className="flex">
