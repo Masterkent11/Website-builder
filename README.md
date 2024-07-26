@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://prnt.sc/qBna3Jweftma" alt="Builder-App" width="100%" style="border-radius: 10px;" />
+  <img src="https://via.placeholder.com/1200x400?text=Builder-App+Dashboard" alt="Builder-App" width="100%" style="border-radius: 10px;" />
   <h1>Builder-App 🚀</h1>
   <p>Welcome to the <strong>Builder-App</strong> repository! This project is designed to make web application development easy and efficient by providing a set of tools and components that are flexible and easy to use.</p>
   <a href="https://website-builder-git-main-masterkent11s-projects.vercel.app/dashboard/page" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; font-weight: bold;">Visit the Dashboard</a>
@@ -44,7 +44,7 @@
 - **Built-in Utilities**: Utilize a range of tools for date manipulation, form handling, and more.
 
 <div align="center">
-  <img src="https://via.placeholder.com/1200x400?text=Features+Demo" alt="Features Demo" width="100%" style="border-radius: 10px;" />
+  <img src="https://prnt.sc/a0LZqmbie0Mo" alt="Features Demo" width="100%" style="border-radius: 10px;" />
 </div>
 
 ## 🛠️ Technologies
